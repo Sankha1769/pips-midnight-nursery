@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pip’s Midnight Nursery ✦ Baby’s First Portfolio</title>
+<meta name="description" content="Pip the Skull Baby, Junior Dream Engineer. I build the dreams you fall asleep inside.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>💤</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff8f1;--ink:#5c4033;--accent:#a34063;--card:#fff;--glow:#ffb454;--night:0}
+:root[data-theme=night]{--bg:#1d1530;--ink:#f6e9dc;--accent:#ffb454;--card:#2b2145;--night:1}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.05rem/1.6 Fredoka,system-ui,sans-serif;transition:background .4s,color .4s;overflow-x:hidden}
+h1,h2{font-family:"DM Serif Display",Georgia,serif;color:var(--accent);line-height:1.1;margin:.2em 0}
+h1{font-size:clamp(2.2rem,8vw,4.5rem)}h2{font-size:clamp(1.7rem,5vw,2.6rem);text-align:center}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:var(--accent)}
+.bar{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:.5rem;padding:.5rem 1rem;background:var(--bg);border-bottom:3px dashed var(--accent)}
+.logo{font-family:"DM Serif Display",serif;color:var(--accent);font-size:1.2rem}
+.ctl button{background:var(--card);border:2px solid var(--accent);border-radius:999px;padding:.2rem .7rem;margin-left:.3rem;font-size:1.1rem}
+.marquee{background:var(--accent);color:#fff8f1;overflow:hidden;white-space:nowrap;padding:.2rem 0;font-size:.9rem}
+.marquee span{display:inline-block;padding-left:100%;animation:mq 22s linear infinite}
+@keyframes mq{to{transform:translateX(-100%)}}
+section{max-width:980px;margin:auto;padding:3rem 1rem}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:center}
+.polaroid{position:relative;background:#fff;padding:.7rem .7rem 2.2rem;border-radius:6px;box-shadow:0 6px 0 var(--accent);transform:rotate(-2deg);max-width:380px;margin:auto}
+.polaroid img{width:100%;display:block;border-radius:3px}
+.polaroid figcaption{position:absolute;bottom:.5rem;left:0;right:0;text-align:center;color:#5c4033;font-size:.9rem}
+.bob{animation:bob 4s ease-in-out infinite}
+@keyframes bob{50%{transform:rotate(-2deg) translateY(-8px)}}
+.pom{position:absolute;left:14%;top:34%;width:14%;aspect-ratio:1;border:0;background:transparent;border-radius:50%}
+.pom:focus-visible,button:focus-visible,.key:focus-visible{outline:3px solid var(--glow);outline-offset:2px}
+.tag{font-size:1.25rem;font-style:italic}
+dl{display:grid;grid-template-columns:auto 1fr;gap:.2rem .8rem}dt{font-weight:600;color:var(--accent)}dd{margin:0}
+.cards{display:grid;gap:1.5rem}
+.card{background:var(--card);border-radius:20px;padding:1.2rem;box-shadow:0 5px 0 var(--accent);display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-items:center}
+.card:nth-child(even) .pic{order:2}
+.card img{width:100%;border-radius:14px;display:block}
+.card h3{margin:.1em 0;color:var(--accent);font-family:"DM Serif Display",serif;font-size:1.6rem}
+.keys{display:flex;gap:.4rem;flex-wrap:wrap}
+.key{width:2.6rem;height:2.6rem;border-radius:50%;border:2px solid var(--accent);background:var(--glow);font-size:1.2rem}
+.key:active{transform:scale(.9)}
+.btn{background:var(--accent);color:#fff8f1;border:0;border-radius:999px;padding:.4rem 1.1rem;margin:.3rem .3rem .3rem 0}
+.lamp{position:relative}
+.lamp::after{content:"";position:absolute;inset:0;border-radius:14px;background:radial-gradient(circle,#ffb454aa,transparent 65%);opacity:0;transition:opacity .5s;pointer-events:none}
+.lamp.on::after{opacity:1}
+.route{background:var(--card);border-radius:20px;padding:1rem;box-shadow:0 5px 0 var(--accent)}
+.route svg{width:100%;height:auto;display:block}
+.story{display:grid;gap:1.2rem}
+.scene{background:var(--card);border-left:8px solid var(--accent);border-radius:14px;padding:1rem 1.3rem;opacity:0;transform:translateY(30px);transition:all .7s}
+.scene.in{opacity:1;transform:none}
+.scene b{color:var(--accent)}
+footer{text-align:center;padding:2rem 1rem 4rem;font-size:.9rem}
+.odo{display:inline-flex;gap:2px;vertical-align:middle}
+.odo i{background:#222;color:#ffb454;font:normal 700 1.2rem monospace;padding:0 .35rem;border-radius:3px;border:1px solid #555}
+#dark{position:fixed;inset:0;z-index:10;pointer-events:none;opacity:0;transition:opacity .5s;background:radial-gradient(circle 150px at var(--x,50%) var(--y,50%),transparent 0,rgba(10,6,25,.15) 60%,rgba(10,6,25,.62) 100%)}
+:root[data-theme=night] #dark{opacity:1}
+.sp{position:fixed;pointer-events:none;z-index:50;color:#ffb454;transition:all .8s}
+@media(max-width:700px){.hero,.card{grid-template-columns:1fr}.card:nth-child(even) .pic{order:0}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div id="dark" aria-hidden="true"></div>
+<header class="bar">
+  <span class="logo">✦ Midnight Nursery</span>
+  <nav class="ctl">
+    <button id="themeBtn" aria-label="Switch to night mode with torch">🌙</button>
+    <button id="muteBtn" aria-pressed="false" aria-label="Mute sounds">🔊</button>
+  </nav>
+</header>
+<div class="marquee" aria-hidden="true"><span>★ Welcome to Pip’s very first website ★ please do not wake the baby ★ best viewed on a cloud ★ psst… try tapping the fluffy pom-pom ★</span></div>
+
+<main>
+<section class="hero" id="top">
+  <figure class="polaroid bob">
+    <img src="assets/pip_avatar_cloud.jpg" alt="Pip, a baby with a round skull face, glowing amber eyes and a star nightcap, waving from a cloud" width="896" height="1090">
+    <button class="pom" id="egg" aria-label="Pip’s fluffy pom-pom"></button>
+    <figcaption>Pip, age: baby ☁</figcaption>
+  </figure>
+  <div>
+    <h1>Hi, I’m Pip!</h1>
+    <p class="tag">“I build the dreams you fall asleep inside.”</p>
+    <dl>
+      <dt>What</dt><dd>A baby with a smooth round skull, glowy amber eyes and a crooked little smile.</dd>
+      <dt>Job</dt><dd>Junior Dream Engineer, Midnight Nursery.</dd>
+      <dt>Vibe</dt><dd>Sleepy, clumsy, easily delighted. Giggles at everything, hates silence.</dd>
+      <dt>Voice</dt><dd>Hehe! Big yawns, tiny words.</dd>
+    </dl>
+    <button class="btn" id="hi">Say hi 👋</button>
+  </div>
+</section>
+
+<section id="work">
+  <h2>My Work ✦</h2>
+  <div class="cards">
+    <article class="card">
+      <div class="pic"><img src="assets/pip_lullaby_box.jpg" alt="Pip’s golden music box with star chimes" loading="lazy"></div>
+      <div><h3>The Lullaby Lab</h3>
+        <p>A music box that never plays the same song twice. Tap the stars to compose, or let it dream.</p>
+        <div class="keys" id="keys" role="group" aria-label="Music box star keys"></div>
+        <button class="btn" id="auto" aria-pressed="false">▶ Auto-lullaby</button></div>
+    </article>
+    <article class="card">
+      <div class="pic lamp" id="lamp"><img src="assets/pip_dream_lantern.jpg" alt="Pip’s glowing crescent moon nightlight" loading="lazy"></div>
+      <div><h3>Nightlight Collection</h3>
+        <p>My crescent-moon lantern keeps shadows friendly. Light it, then flip on night mode and use your cursor (or finger) as a torch.</p>
+        <button class="btn" id="light" aria-pressed="false">Light the lantern</button></div>
+    </article>
+    <article class="card" style="grid-template-columns:1fr">
+      <div><h3>Dream Delivery Routes</h3>
+        <p>Scroll to follow my rooftop flight. Every dot is a sleepy house.</p></div>
+      <div class="route" id="routeBox">
+        <svg viewBox="0 0 600 200" role="img" aria-label="A dashed flight path over rooftops with a cloud following it">
+          <path id="trail" d="M20 160 C100 20 160 180 240 100 S380 20 440 110 S540 140 580 60" fill="none" stroke="#a34063" stroke-width="3" stroke-dasharray="6 8" opacity=".35"/>
+          <path id="drawn" d="M20 160 C100 20 160 180 240 100 S380 20 440 110 S540 140 580 60" fill="none" stroke="#ffb454" stroke-width="5" stroke-linecap="round"/>
+          <g fill="#5c4033" opacity=".5"><path d="M30 190v-20l15-12 15 12v20z"/><path d="M230 190v-30l15-10 15 10v30z"/><path d="M430 190v-25l15-12 15 12v25z"/></g>
+          <text id="cloud" font-size="30" text-anchor="middle">☁️</text>
+        </svg>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="story">
+  <h2>How I Got Here</h2>
+  <div class="story">
+    <div class="scene"><b>Scene 1 · The Yawn.</b> Once upon a bedtime, a very small yawn echoed through the Midnight Nursery. That was me! I had no name yet, just a nightcap, two sleepy lights for eyes, and a giggle I couldn’t stop.</div>
+    <div class="scene"><b>Scene 2 · The Silence.</b> The nursery was quiet. Too quiet! Little ghosts couldn’t sleep, and I hate silence. So I tapped a spoon on a star, and it went <i>ting</i>. My first lullaby.</div>
+    <div class="scene"><b>Scene 3 · The Job.</b> The Head Dreamer found me humming on the roof. “You’re clumsy,” she said, “but your dreams glow.” She gave me a tiny toolbox. Junior Dream Engineer, Pip. Hehe!</div>
+    <div class="scene"><b>Scene 4 · Tonight.</b> Now I fly across rooftops every night, delivering dreams and fixing nightlights. I still trip on clouds. Come back at bedtime, and I’ll save you a star.</div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <p>You are visitor #<span class="odo" id="odo" aria-label="visitor count"></span> (counted in this browser) ✦ <a href="#top">back to bed ↑</a></p>
+  <p>Made for Baby’s First Website · haX.baby · Track 1</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<script>
+const $=s=>document.querySelector(s), root=document.documentElement;
+const store={get:k=>{try{return localStorage.getItem(k)}catch{return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch{}}};
+
+/* ---- audio + mute ---- */
+let ctx,muted=store.get('muted')==='1';
+const muteBtn=$('#muteBtn');
+const drawMute=()=>{muteBtn.textContent=muted?'🔇':'🔊';muteBtn.setAttribute('aria-pressed',muted);muteBtn.setAttribute('aria-label',muted?'Unmute sounds':'Mute sounds')};
+drawMute();
+muteBtn.onclick=()=>{muted=!muted;store.set('muted',muted?'1':'0');drawMute();if(muted)stopAuto()};
+function tone(f,d=.9,type='sine',v=.14){
+  if(muted)return;
+  try{ctx=ctx||new (window.AudioContext||window.webkitAudioContext)();if(ctx.state==='suspended')ctx.resume();
+  const o=ctx.createOscillator(),g=ctx.createGain(),t=ctx.currentTime;
+  o.type=type;o.frequency.value=f;g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.001,t+d);
+  o.connect(g).connect(ctx.destination);o.start();o.stop(t+d)}catch{}
+}
+const N=[523.25,587.33,659.25,783.99,880,1046.5];
+document.addEventListener('click',e=>{if(!e.target.closest('#muteBtn,.key'))tone(N[Math.random()*N.length|0],.5,'triangle',.08)});
+
+/* ---- music box ---- */
+const keys=$('#keys');
+N.forEach((f,i)=>{const b=document.createElement('button');b.className='key';b.textContent='★';b.setAttribute('aria-label','Note '+(i+1));b.onclick=()=>tone(f,1.4);keys.appendChild(b)});
+let autoT=null;
+function stopAuto(){clearInterval(autoT);autoT=null;$('#auto').textContent='▶ Auto-lullaby';$('#auto').setAttribute('aria-pressed','false')}
+$('#auto').onclick=()=>{
+  if(autoT)return stopAuto();
+  if(muted){muted=false;store.set('muted','0');drawMute()}
+  let i=2;$('#auto').textContent='⏸ Stop';$('#auto').setAttribute('aria-pressed','true');
+  autoT=setInterval(()=>{i=Math.max(0,Math.min(5,i+[-2,-1,-1,0,1,1,2][Math.random()*7|0]));
+    tone(N[i],1.6);const k=keys.children[i];k.animate([{transform:'scale(1.3)'},{transform:'scale(1)'}],250)},650);
+};
+
+/* ---- theme: day / night torch ---- */
+function setTheme(t){root.dataset.theme=t;$('#themeBtn').textContent=t==='night'?'☀️':'🌙';
+  $('#themeBtn').setAttribute('aria-label',t==='night'?'Switch to day mode':'Switch to night mode with torch');store.set('theme',t)}
+setTheme(store.get('theme')||'day');
+$('#themeBtn').onclick=()=>{setTheme(root.dataset.theme==='night'?'day':'night');tone(440,.6)};
+
+/* ---- lantern ---- */
+$('#light').onclick=function(){const on=$('#lamp').classList.toggle('on');this.setAttribute('aria-pressed',on);this.textContent=on?'Blow it out':'Light the lantern';tone(on?880:330,.8)};
+
+/* ---- pointer: torch + sparkle trail ---- */
+let last=0;
+addEventListener('pointermove',e=>{
+  root.style.setProperty('--x',e.clientX+'px');root.style.setProperty('--y',e.clientY+'px');
+  const n=performance.now();if(n-last<45||matchMedia('(prefers-reduced-motion:reduce)').matches)return;last=n;
+  const s=document.createElement('span');s.className='sp';s.textContent='✦';
+  s.style.cssText+=`left:${e.clientX}px;top:${e.clientY}px;font-size:${10+Math.random()*10}px`;
+  document.body.appendChild(s);
+  requestAnimationFrame(()=>{s.style.transform='translateY(28px) scale(.2)';s.style.opacity='0'});
+  setTimeout(()=>s.remove(),800);
+});
+
+/* ---- Say hi: Pip giggles ---- */
+$('#hi').onclick=()=>{[880,1046,784,1046].forEach((f,i)=>setTimeout(()=>tone(f,.25,'square',.05),i*110));
+  const p=$('.polaroid');p.animate([{transform:'rotate(-2deg)'},{transform:'rotate(6deg) scale(1.05)'},{transform:'rotate(-2deg)'}],500)};
+
+/* ---- Easter egg: pom-pom x3 ---- */
+let pom=0;
+$('#egg').onclick=()=>{
+  if(++pom<3)return tone(300+pom*80,.2,'sine',.1);
+  pom=0;[523,659,784,1046,784,659,523].forEach((f,i)=>setTimeout(()=>tone(f,.7),i*160));
+  if(typeof confetti==='function')confetti({particleCount:140,spread:90,origin:{y:.4},colors:['#a34063','#ffb454','#fff8f1','#e8b4c8']});
+  const m=document.createElement('div');m.textContent='💤 You found Pip’s secret lullaby! Sweet dreams.';
+  m.style.cssText='position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);background:#a34063;color:#fff8f1;padding:.6rem 1.2rem;border-radius:999px;z-index:60;text-align:center;max-width:90vw';
+  m.setAttribute('role','status');document.body.appendChild(m);setTimeout(()=>m.remove(),4000);
+};
+
+/* ---- story reveal ---- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.3});
+document.querySelectorAll('.scene').forEach(s=>io.observe(s));
+
+/* ---- delivery route on scroll ---- */
+const drawn=$('#drawn'),len=drawn.getTotalLength(),cloud=$('#cloud');
+drawn.style.strokeDasharray=len;
+function route(){
+  const r=$('#routeBox').getBoundingClientRect(),vh=innerHeight;
+  const p=Math.max(0,Math.min(1,(vh-r.top)/(vh+r.height*.2)));
+  drawn.style.strokeDashoffset=len*(1-p);
+  const pt=drawn.getPointAtLength(len*p);cloud.setAttribute('x',pt.x);cloud.setAttribute('y',pt.y);
+}
+addEventListener('scroll',route,{passive:true});addEventListener('resize',route);route();
+
+/* ---- visitor odometer (per-browser, retro fun) ---- */
+let c=+store.get('visits')||1337;c++;store.set('visits',c);
+$('#odo').innerHTML=String(c).padStart(6,'0').split('').map(d=>`<i>${d}</i>`).join('');
+</script>
+</body>
+</html>
